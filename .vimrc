@@ -131,7 +131,7 @@ autocmd FileType go autocmd BufWritePre <buffer> Fmt
 " status bar
 set laststatus=2 
 highlight StatusLine cterm=bold ctermfg=yellow ctermbg=blue
-" 获取当前路径，将$HOME转化为~
+" get current dir replace ~
 function! CurDir()
     let curdir = substitute(getcwd(), $HOME, "~", "g")
     return curdir
