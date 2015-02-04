@@ -130,3 +130,4 @@ set statusline=[%n]\ %f%m%r%h\ \|\ \ pwd:\ %{CurDir()}\ \ \|%=\|\ %l,%c\ %p%%\ \
 " more than 80 characters highlight
 highlight OverLength ctermbg=red ctermfg=white
 match OverLength /\%81v.\+/
+nmap ,f /<C-R><C-W><CR>
