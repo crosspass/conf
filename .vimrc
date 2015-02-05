@@ -142,3 +142,9 @@ set statusline=[%n]\ %f%m%r%h\ \|\ \ pwd:\ %{CurDir()}\ \ \|%=\|\ %l,%c\ %p%%\ \
 highlight OverLength ctermbg=red ctermfg=white
 match OverLength /\%81v.\+/
 nmap ,f /<C-R><C-W><CR>
+
+" autoload vimrc which is changed
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
