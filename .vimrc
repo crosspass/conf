@@ -1,18 +1,20 @@
 set nocompatible 
 filetype off
-"
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim/
-"call vundle#begin()
-"
-let path='~/.vim/bundle'
-call vundle#begin(path)
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Setting up Vundle - the vim plugin bundler
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle.."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    let iCanHazVundle=0
+endif
+set rtp+=~/.vim/bundle/vundle/
+call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -21,16 +23,22 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
 " Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
 Plugin 'user/L9', {'name': 'newL9'}
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
+"...Install Plugins...
+if iCanHazVundle == 0
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :PluginInstall
+endif
+" Setting up Vundle - the vim plugin bundler end
+
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -45,6 +53,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " bootstrap pathogen
 execute pathogen#infect()
+
 " vim
 syntax enable
 colorscheme solarized
@@ -114,6 +123,7 @@ set ts=4
 set shiftwidth=4
 set expandtab
 set autoindent
+
 " fmt go file
 ":autocmd VimLeave *.go !go fmt
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
@@ -121,13 +131,20 @@ autocmd FileType go autocmd BufWritePre <buffer> Fmt
 " status bar
 set laststatus=2 
 highlight StatusLine cterm=bold ctermfg=yellow ctermbg=blue
-" 获取当前路径，将$HOME转化为~
+" get current dir replace ~
 function! CurDir()
     let curdir = substitute(getcwd(), $HOME, "~", "g")
     return curdir
 endfunction
 set statusline=[%n]\ %f%m%r%h\ \|\ \ pwd:\ %{CurDir()}\ \ \|%=\|\ %l,%c\ %p%%\ \|\ ascii=%b,hex=%b%{((&fenc==\"\")?\"\":\"\ \|\ \".&fenc)}\ \|\ %{$USER}\ @\ %{hostname()}\
+
 " more than 80 characters highlight
 highlight OverLength ctermbg=red ctermfg=white
 match OverLength /\%81v.\+/
 nmap ,f /<C-R><C-W><CR>
+
+" autoload vimrc which is changed
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
