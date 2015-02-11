@@ -38,6 +38,8 @@ Plugin 'kien/ctrlp.vim'
 
 Plugin 'jlanzarotta/bufexplorer'
 
+Plugin 'bling/vim-airline'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
