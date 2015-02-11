@@ -129,7 +129,7 @@ set autoindent
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 " status bar
-"set laststatus=2 
+set laststatus=2 
 "highlight StatusLine cterm=bold ctermfg=yellow ctermbg=blue
 " 获取当前路径，将$HOME转化为~
 "function! CurDir()
