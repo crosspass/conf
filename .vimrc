@@ -54,14 +54,6 @@ set background=dark
 
 colorscheme solarized
 " set ctrlP
-set runtimepath^=~/vimfiles/bundle/ctrlp.vim
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
-let g:ctrlp_custom_ignore={
-  \ 'dir': '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dell)$',
-  \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-\ }
-let g:ctrlp_user_command='dir %s /-n /b /s /a-d'
 " multiple VCS listing commands
 let g:crlp_user_command = {
   \ 'types': {
@@ -71,12 +63,17 @@ let g:crlp_user_command = {
   \ 'fallback': 'find %s -type f'
 \ }    
 " set working directory
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_lazy_update = 1
+map ,b :CtrlPBuffer<cr>
+map ,m :CtrlPMRU<cr>
+map ,l :CtrlPLastMode<cr>
+
 " set number line
 set nu
 " set encoding
 set encoding=utf-8
 set fileencoding=utf-8
-
 
 " Search for selected text.
 " http://vim.wikia.com/wiki/VimTip171
@@ -136,5 +133,7 @@ augroup reload_vimrc "{
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END "}
+
+set wildmenu
 
 let g:ackgrp='ag -vimgrep'
