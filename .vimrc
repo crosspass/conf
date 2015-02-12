@@ -11,8 +11,8 @@ if !filereadable(vundle_readme)
     let iCanHazVundle=0
 endif
 set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
 
+call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
@@ -22,13 +22,6 @@ Plugin 'tpope/vim-fugitive'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
-
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " colorscheme soloarized
 Plugin 'altercation/vim-colors-solarized'
@@ -130,23 +123,13 @@ set autoindent
 ":autocmd VimLeave *.go !go fmt
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
-" status bar
-set laststatus=2 
-"highlight StatusLine cterm=bold ctermfg=yellow ctermbg=blue
-" 获取当前路径，将$HOME转化为~
-"function! CurDir()
-"    let curdir = substitute(getcwd(), $HOME, "~", "g")
-"    return curdir
-"endfunction
-"set statusline=[%n]\ %f%m%r%h\ \|\ \ pwd:\ %{CurDir()}\ \ \|%=\|\ %l,%c\ %p%%\ \|\ ascii=%b,hex=%b%{((&fenc==\"\")?\"\":\"\ \|\ \".&fenc)}\ \|\ %{$USER}\ @\ %{hostname()}\
 set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 " more than 80 characters highlight
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
-"isert debug statement
+" ruby isert debug statement
 nmap <c-d> <Esc>orequire 'pry'<CR>binding.pry<Esc>
-
 
 "autoload .vimrc when it changed
 augroup reload_vimrc "{
