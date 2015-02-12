@@ -123,12 +123,12 @@ set autoindent
 ":autocmd VimLeave *.go !go fmt
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
-set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
+set laststatus=2
 " more than 80 characters highlight
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
-" ruby isert debug statement
+"isert debug statement
 nmap <c-d> <Esc>orequire 'pry'<CR>binding.pry<Esc>
 
 "autoload .vimrc when it changed
