@@ -20,6 +20,9 @@ Plugin 'gmarik/Vundle.vim'
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 
+" commentary
+Plugin 'tpope/vim-commentary'
+
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 
@@ -29,9 +32,9 @@ Plugin 'altercation/vim-colors-solarized'
 " Ctrlp path plugin
 Plugin 'kien/ctrlp.vim'
 
-Plugin 'jlanzarotta/bufexplorer'
-
+" status bar
 Plugin 'bling/vim-airline'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -52,7 +55,9 @@ filetype plugin indent on    " required
 syntax enable
 set background=dark
 
+" set colorscheme
 colorscheme solarized
+
 " set ctrlP
 " multiple VCS listing commands
 let g:crlp_user_command = {
@@ -68,12 +73,17 @@ let g:ctrlp_lazy_update = 1
 map ,b :CtrlPBuffer<cr>
 map ,m :CtrlPMRU<cr>
 map ,l :CtrlPLastMode<cr>
+" ctrlP config finish
+
+" set vim-airline
+let g:airline#extensions#tabline#enabled = 1
 
 " set number line
 set nu
 " set encoding
 set encoding=utf-8
 set fileencoding=utf-8
+
 
 " Search for selected text.
 " http://vim.wikia.com/wiki/VimTip171
@@ -134,6 +144,11 @@ augroup reload_vimrc "{
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END "}
 
+" menu display wild content
 set wildmenu
 
+" set search hightlight
+set hls
+
 let g:ackgrp='ag -vimgrep'
+
