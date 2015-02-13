@@ -34,7 +34,7 @@ Plugin 'kien/ctrlp.vim'
 
 " status bar
 Plugin 'bling/vim-airline'
-
+Plugin 'bling/vim-bufferline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -76,10 +76,28 @@ map ,l :CtrlPLastMode<cr>
 " ctrlP config finish
 
 " set vim-airline
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#empty_message = ''
+let g:airline#extensions#branch#displayed_head_limit = 10
 
-" set number line
-set nu
+let g:airline#extensions#ctrlp#color_template = 'insert'
+let g:airline#extensions#ctrlp#color_template = 'normal'
+let g:airline#extensions#ctrlp#color_template = 'visual'
+let g:airline#extensions#ctrlp#color_template = 'replace'
+let g:airline#extensions#ctrlp#show_adjacent_modes = 1
+" finish airline configure
+
+" hunk jumping
+nmap <leader>gj <plug>(signify-next-hunk)
+nmap <leader>gk <plug>(signify-prev-hunk)
+
+" hunk text object
+omap ic <plug>(signify-motion-inner-pending)
+xmap ic <plug>(signify-motion-inner-visual)
+omap ac <plug>(signify-motion-outer-pending)
+xmap ac <plug>(signify-motion-outer-visual)
+
 " set encoding
 set encoding=utf-8
 set fileencoding=utf-8
@@ -151,4 +169,3 @@ set wildmenu
 set hls
 
 let g:ackgrp='ag -vimgrep'
-
