@@ -16,6 +16,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" git plugin
 Plugin 'tpope/vim-fugitive'
 
 " commentary
@@ -37,7 +38,10 @@ Plugin 'bling/vim-bufferline'
 " golang plugin
 Plugin 'fatih/vim-go'
 
+" preview tools
 Plugin 'majutsushi/tagbar'
+
+" search tools
 Plugin 'rking/ag.vim'
 
 " All of your Plugins must be added before the following line
@@ -125,7 +129,7 @@ let g:go_fmt_command = "goimports"
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
-"isert debug statement
+" ruby pry isert debug statement
 nmap <c-d> <Esc>orequire 'pry'<CR>binding.pry<Esc>
 
 "autoload .vimrc when it changed
