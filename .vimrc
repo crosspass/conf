@@ -88,62 +88,18 @@ let g:airline#extensions#ctrlp#color_template = 'replace'
 let g:airline#extensions#ctrlp#show_adjacent_modes = 1
 " finish airline configure
 
-" hunk jumping
-nmap <leader>gj <plug>(signify-next-hunk)
-nmap <leader>gk <plug>(signify-prev-hunk)
-
-" hunk text object
-omap ic <plug>(signify-motion-inner-pending)
-xmap ic <plug>(signify-motion-inner-visual)
-omap ac <plug>(signify-motion-outer-pending)
-xmap ac <plug>(signify-motion-outer-visual)
 
 " set encoding
 set encoding=utf-8
 set fileencoding=utf-8
 
 
-" Search for selected text.
-" http://vim.wikia.com/wiki/VimTip171
-let s:save_cpo = &cpo | set cpo&vim
-if !exists('g:VeryLiteral')
-  let g:VeryLiteral = 0
-endif
-function! s:VSetSearch(cmd)
-  let old_reg = getreg('"')
-  let old_regtype = getregtype('"')
-  normal! gvy
-  if @@ =~? '^[0-9a-z,_]*$' || @@ =~? '^[0-9a-z ,_]*$' && g:VeryLiteral
-    let @/ = @@
-  else
-    let pat = escape(@@, a:cmd.'\')
-    if g:VeryLiteral
-      let pat = substitute(pat, '\n', '\\n', 'g')
-    else
-      let pat = substitute(pat, '^\_s\+', '\\s\\+', '')
-      let pat = substitute(pat, '\_s\+$', '\\s\\*', '')
-      let pat = substitute(pat, '\_s\+', '\\_s\\+', 'g')
-    endif
-    let @/ = '\V'.pat
-  endif
-  normal! gV
-  call setreg('"', old_reg, old_regtype)
-endfunction
-vnoremap <silent> * :<C-U>call <SID>VSetSearch('/')<CR>/<C-R>/<CR>
-vnoremap <silent> # :<C-U>call <SID>VSetSearch('?')<CR>?<C-R>/<CR>
-vmap <kMultiply> *
-nmap <silent> <Plug>VLToggle :let g:VeryLiteral = !g:VeryLiteral
-  \\| echo "VeryLiteral " . (g:VeryLiteral ? "On" : "Off")<CR>
-if !hasmapto("<Plug>VLToggle")
-  nmap <unique> <Leader>vl <Plug>VLToggle
-endif
-let &cpo = s:save_cpo | unlet s:save_cpo
-
 " set tab to 4 blank
 set ts=2
 set shiftwidth=2
 set expandtab
 set autoindent
+
 " fmt go file
 ":autocmd VimLeave *.go !go fmt
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
