@@ -16,8 +16,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 
 " commentary
@@ -35,6 +33,12 @@ Plugin 'kien/ctrlp.vim'
 " status bar
 Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
+
+" golang plugin
+Plugin 'fatih/vim-go'
+
+Plugin 'majutsushi/tagbar'
+Plugin 'rking/ag.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,7 +58,21 @@ filetype plugin indent on    " required
 " vim
 syntax enable
 set background=dark
-
+let mapleader = ','
+" set encoding
+set encoding=utf-8
+set fileencoding=utf-8
+" set tab to 4 blank
+set ts=2
+set shiftwidth=2
+set expandtab
+set autoindent
+" display status bar
+set laststatus=2
+" menu display wild content
+set wildmenu
+" set search hightlight
+set hls
 " set colorscheme
 colorscheme solarized
 
@@ -70,10 +88,9 @@ let g:crlp_user_command = {
 " set working directory
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_lazy_update = 1
-map ,b :CtrlPBuffer<cr>
 map ,m :CtrlPMRU<cr>
 map ,l :CtrlPLastMode<cr>
-" ctrlP config finish
+" finish ctrlP configurate
 
 " set vim-airline
 let g:airline#extensions#bufferline#enabled = 1
@@ -88,23 +105,22 @@ let g:airline#extensions#ctrlp#color_template = 'replace'
 let g:airline#extensions#ctrlp#show_adjacent_modes = 1
 " finish airline configure
 
+" configure vim-go
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+let g:go_fmt_command = "goimports"
+" finish vim-go configure
 
-" set encoding
-set encoding=utf-8
-set fileencoding=utf-8
-
-
-" set tab to 4 blank
-set ts=2
-set shiftwidth=2
-set expandtab
-set autoindent
-
-" fmt go file
-":autocmd VimLeave *.go !go fmt
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
-
-set laststatus=2
 " more than 80 characters highlight
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
@@ -118,10 +134,5 @@ augroup reload_vimrc "{
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END "}
 
-" menu display wild content
-set wildmenu
-
-" set search hightlight
-set hls
-
+" configure ag
 let g:ackgrp='ag -vimgrep'
