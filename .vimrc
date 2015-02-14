@@ -21,6 +21,7 @@ Plugin 'tpope/vim-fugitive'
 
 " commentary
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -59,13 +60,11 @@ endif
 " Setting up Vundle - the vim plugin bundler end
 
 
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-
 " vim
+filetype plugin indent on    " required
 syntax enable
 let mapleader = ','
+runtime macros/matchit.vim
 set hidden
 " set encoding
 set encoding=utf-8
