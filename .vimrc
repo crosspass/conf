@@ -1,4 +1,4 @@
-set nocompatible 
+set nocompatible
 filetype off
 " set the runtime path to include Vundle and initialize
 let iCanHazVundle=1
@@ -37,6 +37,9 @@ Plugin 'bling/vim-bufferline'
 " golang plugin
 Plugin 'fatih/vim-go'
 
+" ruby plugin
+Plugin 'ngmy/vim-rubocop'
+
 Plugin 'majutsushi/tagbar'
 Plugin 'rking/ag.vim'
 
@@ -51,14 +54,15 @@ if iCanHazVundle == 0
 endif
 " Setting up Vundle - the vim plugin bundler end
 
+
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 
 " vim
 syntax enable
-set background=dark
 let mapleader = ','
+set hidden
 " set encoding
 set encoding=utf-8
 set fileencoding=utf-8
@@ -73,8 +77,28 @@ set laststatus=2
 set wildmenu
 " set search hightlight
 set hls
+
 " set colorscheme
+set background=dark
 colorscheme solarized
+
+" more than 80 characters highlight
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+match OverLength /\ \+$/
+
+" easy expansion of the active file directory
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+"isert debug statement
+nmap <c-d> <Esc>orequire 'pry'<CR>binding.pry<Esc>
+
+"autoload .vimrc when it changed
+augroup reload_vimrc "{
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END "}
+
 
 " set ctrlP
 " multiple VCS listing commands
@@ -84,7 +108,7 @@ let g:crlp_user_command = {
      \ 2: ['.hg', 'hg -cwd %s locate -I .'],
      \ },
   \ 'fallback': 'find %s -type f'
-\ }    
+\ }
 " set working directory
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_lazy_update = 1
@@ -121,18 +145,8 @@ au FileType go nmap <Leader>e <Plug>(go-rename)
 let g:go_fmt_command = "goimports"
 " finish vim-go configure
 
-" more than 80 characters highlight
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-
-"isert debug statement
-nmap <c-d> <Esc>orequire 'pry'<CR>binding.pry<Esc>
-
-"autoload .vimrc when it changed
-augroup reload_vimrc "{
-    autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END "}
+" configure vim-rubocop
+au FileType ruby nmap <Leader>ru<Plug>(rubo-cop)
 
 " configure ag
 let g:ackgrp='ag -vimgrep'
