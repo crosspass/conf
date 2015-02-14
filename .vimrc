@@ -64,7 +64,7 @@ endif
 filetype plugin indent on    " required
 syntax enable
 let mapleader = ','
-runtime macros/matchit.vim
+runtime += 'macros/matchit.vim'
 set hidden
 " set encoding
 set encoding=utf-8
