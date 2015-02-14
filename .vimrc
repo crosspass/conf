@@ -16,6 +16,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" git plugin
 Plugin 'tpope/vim-fugitive'
 
 " commentary
@@ -40,7 +41,10 @@ Plugin 'fatih/vim-go'
 " ruby plugin
 Plugin 'ngmy/vim-rubocop'
 
+" preview tools
 Plugin 'majutsushi/tagbar'
+
+" search tools
 Plugin 'rking/ag.vim'
 
 " All of your Plugins must be added before the following line
@@ -145,8 +149,23 @@ au FileType go nmap <Leader>e <Plug>(go-rename)
 let g:go_fmt_command = "goimports"
 " finish vim-go configure
 
+<<<<<<< HEAD
 " configure vim-rubocop
 au FileType ruby nmap <Leader>ru<Plug>(rubo-cop)
+=======
+" more than 80 characters highlight
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
+" ruby pry isert debug statement
+nmap <c-d> <Esc>orequire 'pry'<CR>binding.pry<Esc>
+
+"autoload .vimrc when it changed
+augroup reload_vimrc "{
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END "}
+>>>>>>> 5670e186c4e5ef0f4af9fc833b11f5adbb44322c
 
 " configure ag
 let g:ackgrp='ag -vimgrep'
