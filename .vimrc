@@ -51,6 +51,9 @@ Plugin 'rking/ag.vim'
 " visual search *,#
 Plugin 'nelstrom/vim-visual-star-search'
 
+" Qarg
+Plugin 'nelstrom/vim-qargs'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
