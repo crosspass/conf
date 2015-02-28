@@ -80,6 +80,8 @@ set laststatus=2
 set wildmenu
 " set search hightlight
 set hls
+" set incsearch
+set is
 
 " set colorscheme
 set background=dark
