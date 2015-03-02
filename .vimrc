@@ -151,9 +151,6 @@ let g:go_fmt_command = "goimports"
 " configure vim-rubocop
 au FileType ruby nmap <Leader>ru<Plug>(rubo-cop)
 
-" more than 80 characters highlight
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
 
 " ruby pry isert debug statement
 nmap <c-d> <Esc>orequire 'pry'<CR>binding.pry<Esc>
