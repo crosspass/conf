@@ -48,6 +48,12 @@ Plugin 'majutsushi/tagbar'
 " search tools
 Plugin 'rking/ag.vim'
 
+" visual search *,#
+Plugin 'nelstrom/vim-visual-star-search'
+
+" Qarg
+Plugin 'nelstrom/vim-qargs'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -80,6 +86,8 @@ set laststatus=2
 set wildmenu
 " set search hightlight
 set hls
+" set incsearch
+set is
 
 " set colorscheme
 set background=dark
