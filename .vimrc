@@ -22,6 +22,8 @@ Plugin 'tpope/vim-fugitive'
 " commentary
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
+" unimparied.vim
+Plugin 'tpope/vim-unimpaired'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
