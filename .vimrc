@@ -97,7 +97,7 @@ colorscheme solarized
 
 " more than 80 characters highlight
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+2match OverLength /\%81v.\+/
 
 " tail space highlight
 highlight ExtraWhitespace ctermbg=red guibg=red
