@@ -74,6 +74,7 @@ syntax enable
 let mapleader = ','
 runtime += 'macros/matchit.vim'
 set hidden
+set modified
 " set encoding
 set encoding=utf-8
 set fileencoding=utf-8
