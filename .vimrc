@@ -36,7 +36,6 @@ Plugin 'kien/ctrlp.vim'
 
 " status bar
 Plugin 'bling/vim-airline'
-Plugin 'bling/vim-bufferline'
 
 " golang plugin
 Plugin 'fatih/vim-go'
