@@ -1,0 +1,27 @@
+# create a session
+tmux has-session -t dev
+if [ $? != 0 ]
+then
+  tmux new-session -s dev -n edit -d
+
+  # change work directory
+  tmux send-keys -t dev 'cd ~/devproject' C-m
+
+  # fire up vim
+  tmux send-keys -t dev 'vim' C-m
+
+  # split window
+  tmux split-window -h -t dev
+  tmux select-layout -t dev main-horizontal
+
+  tmux send-keys -t dev:1.2 'cd ~/devproject' C-m
+
+  # open second window
+   tmux new-window -n console -t dev
+   tmux send-keys -t dev:2 'cd ~/project' C-m
+
+  # display window
+  tmux select-window -t dev:1
+  tmux attach -t dev
+fi
+tmux attach -t dev
