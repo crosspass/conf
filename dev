@@ -1,27 +1,27 @@
+#!/bin/sh
+
+# set project home directory
+Project_Home=~/qing_test
+Project_Name=qing_test
+
 # create a session
-tmux has-session -t dev
+tmux has-session -t ${Project_Name}
 if [ $? != 0 ]
 then
-  tmux new-session -s dev -n edit -d
+  # create new session
+  tmux new-session -s ${Project_Name} -c ${Project_Home} -n editor -d vim
 
-  # change work directory
-  tmux send-keys -t dev 'cd ~/devproject' C-m
+  # split windows
+  tmux split-window -h -p 35 -t ${Project_Name} -c ${Project_Home}
 
-  # fire up vim
-  tmux send-keys -t dev 'vim' C-m
+  # split windowss
+  tmux split-window -v -t ${Project_Name} -c ${Project_Home}
 
-  # split window
-  tmux split-window -h -t dev
-  tmux select-layout -t dev main-horizontal
-
-  tmux send-keys -t dev:1.2 'cd ~/devproject' C-m
-
-  # open second window
-   tmux new-window -n console -t dev
-   tmux send-keys -t dev:2 'cd ~/project' C-m
+  # create new window
+  tmux new-window -c ~/ -n tmp -t ${Project_Name}
 
   # display window
-  tmux select-window -t dev:1
-  tmux attach -t dev
+  tmux select-window -t ${Project_Name}:1
+  tmux select-pane -t ${Project_Name} -L
 fi
-tmux attach -t dev
+tmux attach -t ${Project_Name}
