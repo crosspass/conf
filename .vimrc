@@ -98,15 +98,20 @@ colorscheme solarized
 
 " more than 80 characters highlight
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-2match OverLength /\%81v.\+/
+match OverLength /\%81v.\+/
 
 " tail space highlight
 highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
+2match ExtraWhitespace /\s\+$/
+
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+
+autocmd BufWinEnter * match OverLength  /\%81v.\+$/
+" autocmd InsertEnter * match OverLength /\%81v.\+\%#\@<!$/
+autocmd InsertLeave * match OverLength /\%81v.\+$/
+autocmd BufWinLeave * all clearmatches()
 
 " easy expansion of the active file directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
