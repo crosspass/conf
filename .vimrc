@@ -24,6 +24,10 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 " unimparied.vim
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-bundler'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
