@@ -42,6 +42,7 @@ Plugin 'fatih/vim-go'
 
 " ruby plugin
 Plugin 'ngmy/vim-rubocop'
+Plugin 'sunaku/vim-ruby-minitest'
 
 " preview tools
 Plugin 'majutsushi/tagbar'
