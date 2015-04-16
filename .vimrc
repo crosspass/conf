@@ -22,8 +22,11 @@ Plugin 'tpope/vim-fugitive'
 " commentary
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-" unimparied.vim
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-bundler'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -38,7 +41,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 
 " golang plugin
-Plugin 'fatih/vim-go'
+" Plugin 'fatih/vim-go'
 
 " ruby plugin
 Plugin 'ngmy/vim-rubocop'
