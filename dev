@@ -1,15 +1,15 @@
 #!/bin/sh
 
 # set project home directory
-Project_Home=~/qing_test
-Project_Name=qing_test
+Project_Home='~/gitlab/cbt_store/'
+Project_Name=cbt_store
 
 # create a session
 tmux has-session -t ${Project_Name}
 if [ $? != 0 ]
 then
   # create new session
-  tmux new-session -s ${Project_Name} -c ${Project_Home} -n editor -d vim
+  tmux new-session -s ${Project_Name} -n editor -d "cd ${Project_Home}&&vim ."
 
   # split windows
   tmux split-window -h -p 35 -t ${Project_Name} -c ${Project_Home}
@@ -18,7 +18,10 @@ then
   tmux split-window -v -t ${Project_Name} -c ${Project_Home}
 
   # create new window
-  tmux new-window -c ~/ -n tmp -t ${Project_Name}
+  tmux new-window -c ${Project_Home} -n tmp -t ${Project_Name}
+
+  # create new window
+  tmux new-window -c ${Project_Home} -n console -t ${Project_Name} 'RAILS_ENV=development bundle exec rails s' 
 
   # display window
   tmux select-window -t ${Project_Name}:1
