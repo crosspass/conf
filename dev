@@ -12,16 +12,19 @@ then
   tmux new-session -s ${Project_Name} -n editor -d "cd ${Project_Home}&&vim ."
 
   # split windows
-  tmux split-window -h -p 35 -t ${Project_Name} -c ${Project_Home}
+  #tmux split-window -h -p 35 -t ${Project_Name} -c ${Project_Home}
 
   # split windowss
-  tmux split-window -v -t ${Project_Name} -c ${Project_Home}
+  #tmux split-window -v -t ${Project_Name} -c ${Project_Home}
 
   # create new window
-  tmux new-window -c ${Project_Home} -n tmp -t ${Project_Name}
+  tmux new-window -c ${Project_Home} -n console -t ${Project_Name} 'RAILS_ENV=development bundle exec rails c'
 
   # create new window
-  tmux new-window -c ${Project_Home} -n console -t ${Project_Name} 'RAILS_ENV=development bundle exec rails s' 
+  tmux new-window -c ${Project_Home} -n runing -t ${Project_Name} 'RAILS_ENV=development bundle exec rails s' 
+
+  # create new window
+  tmux new-window -c ${Project_Home} -n tmp -t ${Project_Name} 'RAILS_ENV=development bundle exec rails s' 
 
   # display window
   tmux select-window -t ${Project_Name}:1
