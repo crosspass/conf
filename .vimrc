@@ -59,6 +59,12 @@ Plugin 'nelstrom/vim-visual-star-search'
 " Qarg
 Plugin 'nelstrom/vim-qargs'
 
+" vim-slim
+Plugin 'slim-template/vim-slim'
+
+" This project adds CoffeeScript support to vim. It covers syntax, indenting, compiling, and more.
+Plugin 'kchmck/vim-coffee-script'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -101,20 +107,16 @@ colorscheme solarized
 
 " more than 80 characters highlight
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-
 " tail space highlight
 highlight ExtraWhitespace ctermbg=red guibg=red
-2match ExtraWhitespace /\s\+$/
 
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
-autocmd BufWinEnter * match OverLength  /\%81v.\+$/
+autocmd BufWinEnter * 2match OverLength  /\%81v.\+$/
 " autocmd InsertEnter * match OverLength /\%81v.\+\%#\@<!$/
-autocmd InsertLeave * match OverLength /\%81v.\+$/
-autocmd BufWinLeave * all clearmatches()
+autocmd InsertLeave * 2match OverLength /\%81v.\+$/
 
 " easy expansion of the active file directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
