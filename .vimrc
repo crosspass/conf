@@ -183,6 +183,9 @@ au FileType ruby nmap <Leader>ru<Plug>(rubo-cop)
 " ruby pry isert debug statement
 nmap <c-d> <Esc>orequire 'pry'<CR>binding.pry<Esc>
 
+" insert #encoding: utf-8 at header of text
+nmap ,e <Esc>ggO#encoding: utf-8<CR><Esc>
+
 
 " configure ag
 let g:ackgrp='ag -vimgrep'
