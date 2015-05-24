@@ -1,0 +1,6 @@
+[alias]
+	st = status
+	ci = commit
+	show-graph = log --graph --abbrev-commit --pretty=oneline
+	br = branch
+	co = checkout
