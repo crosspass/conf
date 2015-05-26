@@ -184,7 +184,9 @@ au FileType ruby nmap <Leader>ru<Plug>(rubo-cop)
 nmap <c-d> <Esc>orequire 'pry'<CR>binding.pry<Esc>
 
 " insert #encoding: utf-8 at header of text
-nmap ,e <Esc>ggO#encoding: utf-8<CR><Esc>
+nmap ,e <Esc>maggO#encoding: utf-8<Esc>o<Esc>'a
+" delete tail blank
+nmap ,e <Esc>:%s/\s+$//g<CR>
 
 
 " configure ag
