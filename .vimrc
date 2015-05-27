@@ -81,7 +81,7 @@ endif
 filetype plugin indent on    " required
 syntax enable
 let mapleader = ','
-runtime += 'macros/matchit.vim'
+runtime= 'macros/matchit.vim'
 set hidden
 set modified
 " set encoding
@@ -185,8 +185,8 @@ nmap <c-d> <Esc>orequire 'pry'<CR>binding.pry<Esc>
 
 " insert #encoding: utf-8 at header of text
 nmap ,e <Esc>maggO#encoding: utf-8<Esc>o<Esc>'a
-" delete tail blank
-nmap ,e <Esc>:%s/\s+$//g<CR>
+" delete tail blank   
+nmap ,d <Esc>:%s/\s\+$//g<CR>
 
 
 " configure ag
