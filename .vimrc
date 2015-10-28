@@ -145,6 +145,7 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_lazy_update = 1
 map ,m :CtrlPMRU<cr>
 map ,l :CtrlPLastMode<cr>
+let g:ctrlp_custom_ignore = 'tmp$\|\.git$\|\.hg$'
 " finish ctrlP configurate
 
 " set vim-airline
@@ -185,8 +186,8 @@ nmap <c-d> <Esc>orequire 'pry'<CR>binding.pry<Esc>
 
 " insert #encoding: utf-8 at header of text
 nmap ,e <Esc>maggO#encoding: utf-8<Esc>o<Esc>'a
-" delete tail blank   
-nmap ,d <Esc>:%s/\s\+$//g<CR>
+" delete tail blank
+nmap ,d <Esc>ma:%s/\s\+$//g<CR>'a
 
 
 " configure ag
