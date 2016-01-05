@@ -65,6 +65,14 @@ Plugin 'slim-template/vim-slim'
 " This project adds CoffeeScript support to vim. It covers syntax, indenting, compiling, and more.
 Plugin 'kchmck/vim-coffee-script'
 
+" JavaScript bundle for vim, this bundle provides syntax and indent plugins.
+Plugin 'pangloss/vim-javascript'
+
+" Syntax highlighting and indenting for JSX
+Plugin 'mxw/vim-jsx'
+" Syntastic is a syntax checking plugin for Vim
+" Plugin 'scrooloose/syntastic'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -102,11 +110,13 @@ set hls
 set is
 
 " set colorscheme
+let g:solarized_termcolors=16
+set t_Co=16
 set background=dark
 colorscheme solarized
 
 " more than 80 characters highlight
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 " tail space highlight
 highlight ExtraWhitespace ctermbg=red guibg=red
 
@@ -114,15 +124,12 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
-autocmd BufWinEnter * 2match OverLength  /\%81v.\+$/
-" autocmd InsertEnter * match OverLength /\%81v.\+\%#\@<!$/
-autocmd InsertLeave * 2match OverLength /\%81v.\+$/
+" autocmd BufWinEnter * 2match OverLength  /\%81v.\+$/
+" " autocmd InsertEnter * match OverLength /\%81v.\+\%#\@<!$/
+" autocmd InsertLeave * 2match OverLength /\%81v.\+$/
 
 " easy expansion of the active file directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
-"isert debug statement
-nmap <c-d> <Esc>orequire 'pry'<CR>binding.pry<Esc>
 
 "autoload .vimrc when it changed
 augroup reload_vimrc "{
@@ -182,7 +189,9 @@ au FileType ruby nmap <Leader>ru<Plug>(rubo-cop)
 
 
 " ruby pry isert debug statement
-nmap <c-d> <Esc>orequire 'pry'<CR>binding.pry<Esc>
+nmap <c-d> <Esc>obinding.pry<Esc>
+nmap <c-i> <Esc>oimport { Component } from 'react'<Esc>
+nmap <c-c> <Esc>oexport default class extends Component{<ESC>oconstructor(){<ESC>o}<ESC>orender(){<ESC>oreturn()<ESC>o}<ESC>o}<ESC>9b
 
 " insert #encoding: utf-8 at header of text
 nmap ,e <Esc>maggO#encoding: utf-8<Esc>o<Esc>'a
@@ -192,3 +201,4 @@ nmap ,d <Esc>ma:%s/\s\+$//g<CR>'a
 
 " configure ag
 let g:ackgrp='ag -vimgrep'
+let g:jsx_ext_required = 0
