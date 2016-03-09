@@ -44,8 +44,8 @@ Plugin 'bling/vim-airline'
 " Plugin 'fatih/vim-go'
 
 " ruby plugin
-Plugin 'ngmy/vim-rubocop'
-Plugin 'sunaku/vim-ruby-minitest'
+" Plugin 'ngmy/vim-rubocop'
+" Plugin 'sunaku/vim-ruby-minitest'
 
 " preview tools
 Plugin 'majutsushi/tagbar'
@@ -110,8 +110,6 @@ set hls
 set is
 
 " set colorscheme
-let g:solarized_termcolors=16
-set t_Co=16
 set background=dark
 colorscheme solarized
 
@@ -191,7 +189,7 @@ au FileType ruby nmap <Leader>ru<Plug>(rubo-cop)
 " ruby pry isert debug statement
 nmap <c-d> <Esc>obinding.pry<Esc>
 nmap <c-i> <Esc>oimport { Component } from 'react'<Esc>
-nmap <c-c> <Esc>oexport default class extends Component{<ESC>oconstructor(){<ESC>o}<ESC>orender(){<ESC>oreturn()<ESC>o}<ESC>o}<ESC>9b
+nmap <c-c> <Esc>oexport default class extends Component {<ESC>oconstructor() {<ESC>o}<ESC>orender() {<ESC>oreturn ()<ESC>o}<ESC>o}<ESC>9b
 
 " insert #encoding: utf-8 at header of text
 nmap ,e <Esc>maggO#encoding: utf-8<Esc>o<Esc>'a
