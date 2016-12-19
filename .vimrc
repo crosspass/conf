@@ -17,16 +17,17 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " git plugin
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 
 " commentary
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-projectionist'
-Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-repeat'
+" Plugin 'tpope/vim-rake'
+" Plugin 'tpope/vim-projectionist'
+" Plugin 'tpope/vim-bundler'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -48,7 +49,7 @@ Plugin 'bling/vim-airline'
 " Plugin 'sunaku/vim-ruby-minitest'
 
 " preview tools
-Plugin 'majutsushi/tagbar'
+" Plugin 'majutsushi/tagbar'
 
 " search tools
 Plugin 'rking/ag.vim'
@@ -59,11 +60,18 @@ Plugin 'nelstrom/vim-visual-star-search'
 " Qarg
 Plugin 'nelstrom/vim-qargs'
 
+" Vim syntax highlighting for Vue components
+" Plugin 'posva/vim-vue'
+
+" Syntastic is a syntax checking plugin for Vim created by Martin Grenfell
+Plugin 'vim-syntastic/syntastic'
+
+
 " vim-slim
-Plugin 'slim-template/vim-slim'
+" Plugin 'slim-template/vim-slim'
 
 " This project adds CoffeeScript support to vim. It covers syntax, indenting, compiling, and more.
-Plugin 'kchmck/vim-coffee-script'
+" Plugin 'kchmck/vim-coffee-script'
 
 " JavaScript bundle for vim, this bundle provides syntax and indent plugins.
 Plugin 'pangloss/vim-javascript'
@@ -73,7 +81,14 @@ Plugin 'mxw/vim-jsx'
 " Syntastic is a syntax checking plugin for Vim
 " Plugin 'scrooloose/syntastic'
 
+" https://github.com/SirVer/ultisnips
+Plugin 'SirVer/ultisnips'
+
 " All of your Plugins must be added before the following line
+" https://github.com/honza/vim-snippets
+Plugin 'honza/vim-snippets'
+
+Plugin 'elixir-lang/vim-elixir'
 call vundle#end()            " required
 
 "...Install Plugins...
@@ -188,8 +203,6 @@ au FileType ruby nmap <Leader>ru<Plug>(rubo-cop)
 
 " ruby pry isert debug statement
 nmap <c-d> <Esc>obinding.pry<Esc>
-nmap <c-i> <Esc>oimport { Component } from 'react'<Esc>
-nmap <c-c> <Esc>oexport default class extends Component {<ESC>oconstructor() {<ESC>o}<ESC>orender() {<ESC>oreturn ()<ESC>o}<ESC>o}<ESC>9b
 
 " insert #encoding: utf-8 at header of text
 nmap ,e <Esc>maggO#encoding: utf-8<Esc>o<Esc>'a
@@ -200,3 +213,4 @@ nmap ,d <Esc>ma:%s/\s\+$//g<CR>'a
 " configure ag
 let g:ackgrp='ag -vimgrep'
 let g:jsx_ext_required = 0
+" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
