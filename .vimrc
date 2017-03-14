@@ -88,7 +88,11 @@ Plugin 'SirVer/ultisnips'
 " https://github.com/honza/vim-snippets
 Plugin 'honza/vim-snippets'
 
+" elixir highlight
 Plugin 'elixir-lang/vim-elixir'
+
+" Format code with one button press.
+Plugin 'Chiel92/vim-autoformat'
 call vundle#end()            " required
 
 "...Install Plugins...
@@ -213,4 +217,7 @@ nmap ,d <Esc>ma:%s/\s\+$//g<CR>'a
 " configure ag
 let g:ackgrp='ag -vimgrep'
 let g:jsx_ext_required = 0
-" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+endif
